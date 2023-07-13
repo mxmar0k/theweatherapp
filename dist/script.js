@@ -5,11 +5,17 @@ const searchButton = document.getElementById("search-button");
 const userInput = document.getElementById("user-input");
 
 
-//we added this function to get the weather details of the city we logged 
+//we added this function to get the weather details of the city we logged
+// it used the latitude and longitude parameters we obtain further in this code
+//  once we have a succesfull response we parse it as json andd then the fun begins
+// we have 2 cons for the current weather and for the forecast of the next days
+// the currentWeather uses the first array of the response
+// forecast usess the next arrays, excluding the first and extracting 5
+// we log them to the console to chech that it is correct 
 
 function getWeatherDetails(latitude, longitude) {
     const apiKey = '';
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
   
     return fetch(url)
       .then(response => {
@@ -19,8 +25,27 @@ function getWeatherDetails(latitude, longitude) {
         return response.json();
       })
       .then(data => {
-        console.log('Weather Details:', data);
-        return data;
+        const currentWeather = {
+          date: new Date(data.list[0].dt * 1000),
+          temperature: data.list[0].main.temp,
+          wind: data.list[0].wind.speed,
+          humidity: data.list[0].main.humidity
+        };
+  
+        const forecast = data.list.slice(1, 6).map(item => ({
+          date: new Date(item.dt * 1000),
+          temperature: item.main.temp,
+          wind: item.wind.speed,
+          humidity: item.main.humidity
+        }));
+  
+        console.log('Current Weather:', currentWeather);
+        console.log('5-Day Forecast:', forecast);
+  
+        return {
+          currentWeather,
+          forecast
+        };
       })
       .catch(error => {
         console.log('Error:', error);
