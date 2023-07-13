@@ -10,7 +10,7 @@ const userInput = document.getElementById("user-input");
 //the function sends a fetch and receives the json data to extract the lat
 // and lon, if they are not found it throws an error
 function getCoordinates(city) {
-  const apiKey = '9a8b08fd63683cdb4192ebb6f7b26947';
+  const apiKey = '';
   const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
   return fetch(url)
