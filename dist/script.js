@@ -4,6 +4,30 @@ console.log("hello world");
 const searchButton = document.getElementById("search-button");
 const userInput = document.getElementById("user-input");
 
+
+//we added this function to get the weather details of the city we logged 
+
+function getWeatherDetails(latitude, longitude) {
+    const apiKey = '';
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  
+    return fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch weather details.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Weather Details:', data);
+        return data;
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+  }
+  
+
 //we have a function to get coordinates for a city
 // the url has parameters to limit to one the response
 // there is a const with the api so it logs with the url
@@ -43,5 +67,8 @@ searchButton.addEventListener('click', function() {
   getCoordinates(city)
     .then(coordinates => {
       console.log('Coordinates:', coordinates);
+      getWeatherDetails(coordinates.latitude, coordinates.longitude);
     });
+
 });
+
