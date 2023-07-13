@@ -7,75 +7,32 @@
     <link rel="stylesheet" href="output.css">
 </head>
 <body>
-    <h1 class="bg-green-300">mxWeather App</h1>
-    <div>
-        <div>
-            <h2>Enter a City</h2>
-            <input id="user-input" type="text" placeholder="A real city...">
-            <button id="search-button">Search</button>
-            <div>Searched Cities
+    <div class="grid grid-cols-6 gap-4 bg-blue-100">
+        <div class="col-start-1 col-end-7 text-center bg-blue-50">
+            <h1 class="mb-4 text-3xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Cool Weather App</h1>
+            <h2 class="mb-4 text-2xl font-bold text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Weather Dashboard</h2>
+        </div>
+        <div class="col-start-1 col-end-4 flex flex-col items-center bg-blue-50 w-auto">
+            <h3 class="mb-4 text-1xl text-center font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white">Search for a City</h3>
+            <input id="user-input" type="text" placeholder="Type a City" class="w-full mb-4 text-center">
+            <button id="search-button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
+        </div>
+        <div class="col-end-7 col-span-3  bg-blue-50">
+            <h3 class="mb-4 text-1xl text-center font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white">Current Weather</h3>
+            <ul id="current-weather" class="text-left">
 
-            </div>
-        </div>
-    </div>
-    <div class="all-weather-info">
-        <div class="current-weather">
-            <h2>Current Weather</h2>
-            <div class="main-weather-card">
-                <h3>Mexico City (2023-07-12)</h3>
-                <h3>Temp: 20°C</h3>
-                <h3>Wind: 8.43 MPH</h3>
-                <h3>Temp: 44%</h3>
-            </div>
-            <div class="weather-icon-div">
-                <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                <h3>Clear sky</h3>
-            </div>
-        </div>
-        <div class="weather-forecast">
-            <h2>The next 5 days may look like this</h2>
-            <ul class="prediction-cards">
-                <li>
-                    <h3>(2023-07-12)</h3>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                    <h3>Temp: 20°C</h3>
-                    <h3>Wind: 8.43 MPH</h3>
-                    <h3>Temp: 44%</h3>
-                </li>
-                <li>
-                    <h3>(2023-07-12)</h3>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                    <h3>Temp: 20°C</h3>
-                    <h3>Wind: 8.43 MPH</h3>
-                    <h3>Temp: 44%</h3>
-                </li>
-                <li>
-                    <h3>(2023-07-12)</h3>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                    <h3>Temp: 20°C</h3>
-                    <h3>Wind: 8.43 MPH</h3>
-                    <h3>Temp: 44%</h3>
-                </li>
-                <li>
-                    <h3>(2023-07-12)</h3>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                    <h3>Temp: 20°C</h3>
-                    <h3>Wind: 8.43 MPH</h3>
-                    <h3>Temp: 44%</h3>
-                </li>
-                <li>
-                    <h3>(2023-07-12)</h3>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather-icon">
-                    <h3>Temp: 20°C</h3>
-                    <h3>Wind: 8.43 MPH</h3>
-                    <h3>Temp: 44%</h3>
-                </li>
             </ul>
-
-
         </div>
+        <div class="col-start-1 col-end-7 flex flex-row bg-blue-50 text-center space-x-4 space-y-4">
+            <h1 class="mb-4 text-1xl font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white"> Weather for the next days</h1>
 
-    </div>
+            <ul id="prediction-cards" class="text-left flex flex-row flex-wrap bg-white justify-items-end space-x-5 space-y-5">
+
+            </ul>
+        </div>
+        <div class="col-start-1 col-end-7  bg-blue-50">04</div>
+      </div>
+
     <script src="./script.js"></script>
 </body>
 </html>
