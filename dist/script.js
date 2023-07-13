@@ -8,10 +8,10 @@ const userInput = document.getElementById("user-input");
 //we added this function to get the weather details of the city we logged
 // it used the latitude and longitude parameters we obtain further in this code
 //  once we have a succesfull response we parse it as json andd then the fun begins
-// we have 2 cons for the current weather and for the forecast of the next days
-// the currentWeather uses the first array of the response
-// forecast usess the next arrays, excluding the first and extracting 5
-// we log them to the console to chech that it is correct 
+// i actually got it wrong the first time, because it gave me the same day with a difference of 3 hours on each array
+// so i had to change it to filter, we use for each to go to the data with a unix timestamp, if there is a new, it creates a new one, an entry i mean.
+//the forecast contains one entry per day, with the date, temp, wind and humidity
+// it also contains my tears with how much i have cried doing this 
 
 function getWeatherDetails(latitude, longitude) {
     const apiKey = '';
@@ -25,32 +25,32 @@ function getWeatherDetails(latitude, longitude) {
         return response.json();
       })
       .then(data => {
-        const currentWeather = {
-          date: new Date(data.list[0].dt * 1000),
-          temperature: data.list[0].main.temp,
-          wind: data.list[0].wind.speed,
-          humidity: data.list[0].main.humidity
-        };
+        const filteredForecast = {};
   
-        const forecast = data.list.slice(1, 6).map(item => ({
-          date: new Date(item.dt * 1000),
-          temperature: item.main.temp,
-          wind: item.wind.speed,
-          humidity: item.main.humidity
-        }));
+        data.list.forEach(item => {
+          const date = new Date(item.dt * 1000).toLocaleDateString();
+          
+          if (!filteredForecast[date]) {
+            filteredForecast[date] = {
+              date: new Date(item.dt * 1000),
+              temperature: item.main.temp,
+              wind: item.wind.speed,
+              humidity: item.main.humidity
+            };
+          }
+        });
   
-        console.log('Current Weather:', currentWeather);
-        console.log('5-Day Forecast:', forecast);
+        console.log('Filtered Forecast:', Object.values(filteredForecast));
   
         return {
-          currentWeather,
-          forecast
+          forecast: Object.values(filteredForecast)
         };
       })
       .catch(error => {
         console.log('Error:', error);
       });
   }
+  
   
 
 //we have a function to get coordinates for a city
