@@ -49,6 +49,9 @@ we have an event listenet to get the user input (the city), to get the coordinat
 
 The js has a more precise explanation. Hope you enjoy it.
 
+Now it looks like this:
 
+![Alt text](<Captura de pantalla 2023-07-13 a la(s) 19.08.22-1.png>)
 
+wow very cool
 

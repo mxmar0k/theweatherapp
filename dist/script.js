@@ -118,11 +118,13 @@ function getWeatherDetails(latitude, longitude) {
             .then(cityName => {
               currentWeatherHeading.textContent = `in ${cityName}`;
               currentWeatherHeading.classList.add(
-                'text-2xl',
+                'text-1xl',
                 'font-bold',
                 'text-gray-800',
                 'mb-4',
                 'text-center',
+                'md:text-2xl',
+                'lg:text-3xl'
               );
               currentWeather.appendChild(currentWeatherHeading);
             });
