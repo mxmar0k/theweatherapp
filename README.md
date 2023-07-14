@@ -2,7 +2,7 @@ Cool Weather App!!
 
 You can find the repository here: https://github.com/mxmar0k/theweatherapp
 
-And you can find the page live at: 
+And you can find the page live at: https://mxmar0k.github.io/theweatherapp/ 
 
 
 ![Alt text](image.png)
